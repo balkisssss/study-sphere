@@ -1,9 +1,12 @@
 import { Card, CardHeader, CardBody, Button } from "@heroui/react";
-import { Hourglass, Clock, User } from "lucide-react";
+import { Hourglass, Star, User } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 export default function WideCourseCards({ course }) {
   const navigate = useNavigate();
+  
+  // Generate random rating between 3.5 and 5.0 with one decimal place
+  const rating = (Math.random() * 1.5 + 3.5).toFixed(1);
 
   const handleEnterClass = () => {
     navigate(`/student/class/${course.id}`);
@@ -26,8 +29,8 @@ export default function WideCourseCards({ course }) {
             </p>
 
             <p className="text-gray-300 flex items-center text-lg">
-              <Clock className="w-6 h-6 mr-2 text-[#A6E1FA]" />
-              {course.schedule}
+              <Star className="w-6 h-6 mr-2 text-[#A6E1FA]" />
+              {rating}/5.0
             </p>
 
             <div className="flex items-center gap-2">
